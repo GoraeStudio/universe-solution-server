@@ -1,12 +1,22 @@
-package my.gorae.appUniverseServer.transportation.bus;
+package my.gorae.appUniverseServer.transportation.bus.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import my.gorae.appUniverseServer.common.BaseEntity;
+import my.gorae.appUniverseServer.transportation.bus.entity.busType.ApiTypeBus;
+import my.gorae.appUniverseServer.transportation.bus.entity.busType.TimetableTypeBus;
 import my.gorae.appUniverseServer.transportation.busStation.BusStationEntity;
+
 
 import java.util.List;
 
 @Entity
+@Getter
+@SuperBuilder
+@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class BusEntity extends BaseEntity {
     @Id

@@ -2,9 +2,8 @@ package my.gorae.appUniverseServer.transportation.timetable;
 
 import jakarta.persistence.*;
 import my.gorae.appUniverseServer.common.BaseEntity;
-import my.gorae.appUniverseServer.transportation.bus.busType.TimetableTypeBus;
+import my.gorae.appUniverseServer.transportation.bus.entity.busType.TimetableTypeBus;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 

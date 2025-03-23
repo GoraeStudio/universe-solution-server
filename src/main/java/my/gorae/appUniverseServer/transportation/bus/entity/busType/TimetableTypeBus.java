@@ -1,14 +1,23 @@
-package my.gorae.appUniverseServer.transportation.bus.busType;
+package my.gorae.appUniverseServer.transportation.bus.entity.busType;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-import my.gorae.appUniverseServer.transportation.bus.BusEntity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+import my.gorae.appUniverseServer.transportation.bus.entity.BusEntity;
 import my.gorae.appUniverseServer.transportation.timetable.TimetableEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@SuperBuilder
 public class TimetableTypeBus extends BusEntity {
     // 시간표로 움직이는 차량
     private Integer prevDepartureTime; // 최근 출발 시간

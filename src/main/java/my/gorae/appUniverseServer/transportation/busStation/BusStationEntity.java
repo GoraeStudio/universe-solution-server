@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import my.gorae.appUniverseServer.common.BaseEntity;
-import my.gorae.appUniverseServer.transportation.bus.BusEntity;
+import my.gorae.appUniverseServer.transportation.bus.entity.BusEntity;
 
 import java.util.List;
 
