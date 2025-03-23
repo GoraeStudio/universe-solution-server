@@ -13,5 +13,4 @@ public class ApiTypeBus extends BusEntity {
     private Integer arrPrevStationCnt; // 도착예정버스 남은 정류장 수
     private Integer arrTimeSec; // 도착예정버스 도착예상시간 (초)
 
-
 }

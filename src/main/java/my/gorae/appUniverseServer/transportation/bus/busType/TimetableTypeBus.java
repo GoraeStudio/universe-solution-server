@@ -1,16 +1,15 @@
 package my.gorae.appUniverseServer.transportation.bus.busType;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import my.gorae.appUniverseServer.transportation.bus.BusEntity;
 import my.gorae.appUniverseServer.transportation.timetable.TimetableEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class TimetableTypeBus extends ApiTypeBus {
+public class TimetableTypeBus extends BusEntity {
     // 시간표로 움직이는 차량
     private Integer prevDepartureTime; // 최근 출발 시간
     private Integer nextDepartureTime; // 다음 출발 시간

@@ -2,7 +2,11 @@ package my.gorae.appUniverseServer.transportation.busStation;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import my.gorae.appUniverseServer.common.BaseEntity;
+import my.gorae.appUniverseServer.transportation.bus.BusEntity;
+
+import java.util.List;
 
 @Entity
 public class BusStationEntity extends BaseEntity {
@@ -13,5 +17,9 @@ public class BusStationEntity extends BaseEntity {
     private String busStationName; // 정류소명
     private float latitude; // 위도
     private float longitude; // 경도
+
+    @ManyToMany(mappedBy = "busStationEntityList")
+    private List<BusEntity> busEntityList;
+
 
 }
