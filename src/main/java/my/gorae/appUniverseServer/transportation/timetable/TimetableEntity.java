@@ -1,8 +1,6 @@
 package my.gorae.appUniverseServer.transportation.timetable;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import my.gorae.appUniverseServer.common.BaseEntity;
 import my.gorae.appUniverseServer.transportation.bus.busType.TimetableTypeBus;
 
@@ -22,4 +20,8 @@ public class TimetableEntity extends BaseEntity {
 
     @ManyToOne
     private TimetableTypeBus timetableTypeBus;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
+    private String jsonTimetable;
 }
