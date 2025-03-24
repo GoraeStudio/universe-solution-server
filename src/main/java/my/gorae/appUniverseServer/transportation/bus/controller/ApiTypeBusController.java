@@ -26,15 +26,21 @@ public class ApiTypeBusController {
         busService.resetAllApiBusInfo();
     }
 
-    @PatchMapping("/api/bus/{routeNo}/station/{nodeNm}")
+    @PatchMapping("/routeNo/{routeNo}/nodeNm/{nodeNm}/nodeId/{nodeId}")
     public void updateOrCreateApiBusInfo(
             @PathVariable String routeNo,
             @PathVariable String nodeNm,
+            @PathVariable String nodeId,
             @RequestBody ApiTypeBusDto apiTypeBusDto) {
-        busService.updateOrCreateApiBusInfo(routeNo, nodeNm,
-                apiTypeBusDto.getNodeId(), apiTypeBusDto.getRouteId(),
-                apiTypeBusDto.getRouteTp(),apiTypeBusDto.getVehicleTp(),
-                apiTypeBusDto.getArrPrevStationCnt(), apiTypeBusDto.getArrTimeSec());
+        busService.updateOrCreateApiBusInfo(
+                routeNo,
+                nodeNm,
+                nodeId,
+                apiTypeBusDto.getRouteId(),
+                apiTypeBusDto.getRouteTp(),
+                apiTypeBusDto.getVehicleTp(),
+                apiTypeBusDto.getArrPrevStationCnt(),
+                apiTypeBusDto.getArrTimeSec());
     }
 
 }

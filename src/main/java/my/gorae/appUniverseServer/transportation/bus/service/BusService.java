@@ -55,7 +55,7 @@ public class BusService {
     }
     @Transactional
     public void updateOrCreateApiBusInfo(String routeNo, String nodeNm,String nodeId,String routeId,String routeTp ,String vehicleTp , Integer arrPrevStationCnt, Integer arrTimeSec) {
-        Optional<ApiTypeBus> optionalApiTypeBus = findApiBusInfo(routeNo, nodeNm);
+        Optional<ApiTypeBus> optionalApiTypeBus = findApiBusInfo(routeNo, nodeNm,nodeId);
 
         ApiTypeBus apiTypeBus = optionalApiTypeBus
                 .map(existedApiTypeBus -> updateApiBusInfo(existedApiTypeBus, arrPrevStationCnt, arrTimeSec))
@@ -64,8 +64,8 @@ public class BusService {
         apiTypeBusRepository.save(apiTypeBus);
     }
 
-    private Optional<ApiTypeBus> findApiBusInfo(String routeNo, String nodeNm) {
-        return apiTypeBusRepository.findApiTypeBusByRouteNoAndNodeNm(routeNo, nodeNm);
+    private Optional<ApiTypeBus> findApiBusInfo(String routeNo, String nodeNm,String nodeId) {
+        return apiTypeBusRepository.findApiTypeBusByRouteNoAndNodeNmAndNodeId(routeNo,nodeNm,nodeId);
     }
 
     private ApiTypeBus updateApiBusInfo(ApiTypeBus existedApiTypeBus, Integer arrPrevStationCnt, Integer arrTimeSec) {
@@ -88,10 +88,7 @@ public class BusService {
                 .arrTimeSec(arrTimeSec)
                 .build();
     }
-    @Transactional
-    public void deleteTimetableBus(Long id) {
-        timetableTypeBusRepository.deleteById(id);
-    }
+
     @Transactional
     public void deleteBus(Long id) {
         busRepository.deleteById(id);

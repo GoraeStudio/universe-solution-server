@@ -15,5 +15,5 @@ public interface ApiTypeBusRepository extends JpaRepository<ApiTypeBus, Long> {
     @Query("UPDATE ApiTypeBus a SET a.arrPrevStationCnt = null, a.arrTimeSec = null")
     void resetAllApiBusInfo();
 
-    Optional<ApiTypeBus> findApiTypeBusByRouteNoAndNodeNm(String routeNo, String nodeNm);
+    Optional<ApiTypeBus> findApiTypeBusByRouteNoAndNodeNmAndNodeId(String routeNo, String nodeNm,String nodeId);
 }
