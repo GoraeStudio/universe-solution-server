@@ -54,12 +54,12 @@ public class BusService {
         apiTypeBusRepository.resetAllApiBusInfo();
     }
     @Transactional
-    public void updateOrCreateApiBusInfo(String routeNo, String nodeNm, Integer arrPrevStationCnt, Integer arrTimeSec) {
+    public void updateOrCreateApiBusInfo(String routeNo, String nodeNm,String nodeId,String routeId,String routeTp ,String vehicleTp , Integer arrPrevStationCnt, Integer arrTimeSec) {
         Optional<ApiTypeBus> optionalApiTypeBus = findApiBusInfo(routeNo, nodeNm);
 
         ApiTypeBus apiTypeBus = optionalApiTypeBus
                 .map(existedApiTypeBus -> updateApiBusInfo(existedApiTypeBus, arrPrevStationCnt, arrTimeSec))
-                .orElseGet(() -> createApiBusInfo(routeNo, nodeNm, arrPrevStationCnt, arrTimeSec));
+                .orElseGet(() -> createApiBusInfo(routeNo, nodeNm,nodeId,routeId,routeTp,vehicleTp, arrPrevStationCnt, arrTimeSec));
 
         apiTypeBusRepository.save(apiTypeBus);
     }
@@ -75,11 +75,15 @@ public class BusService {
                 .build();
     }
 
-    private ApiTypeBus createApiBusInfo(String routeNo, String nodeNm, Integer arrPrevStationCnt, Integer arrTimeSec) {
+    private ApiTypeBus createApiBusInfo(String routeNo, String nodeNm,String nodeId,String routeId,String routeTp,String vehicleTp, Integer arrPrevStationCnt, Integer arrTimeSec) {
         return ApiTypeBus.builder()
                 .busTypeEnum(BusTypeEnum.API_TYPE_BUS)
                 .routeNo(routeNo)
                 .nodeNm(nodeNm)
+                .nodeId(nodeId)
+                .routeId(routeId)
+                .routeTp(routeTp)
+                .vehicleTp(vehicleTp)
                 .arrPrevStationCnt(arrPrevStationCnt)
                 .arrTimeSec(arrTimeSec)
                 .build();
