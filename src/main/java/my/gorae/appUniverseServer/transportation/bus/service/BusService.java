@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import my.gorae.appUniverseServer.transportation.bus.dto.busType.TimetableTypeBusDto;
 import my.gorae.appUniverseServer.transportation.bus.entity.BusEntity;
 import my.gorae.appUniverseServer.transportation.bus.entity.busType.ApiTypeBus;
+import my.gorae.appUniverseServer.transportation.bus.entity.busType.BusTypeEnum;
 import my.gorae.appUniverseServer.transportation.bus.entity.busType.TimetableTypeBus;
 import my.gorae.appUniverseServer.transportation.bus.repository.ApiTypeBusRepository;
 import my.gorae.appUniverseServer.transportation.bus.repository.BusRepository;
@@ -32,7 +33,18 @@ public class BusService {
     }
 
     public void createTimetableBus(TimetableTypeBusDto timetableTypeBusDto) {
-        timetableTypeBusRepository.save(timetableTypeBusDto.toEntity());
+
+        TimetableTypeBus i = TimetableTypeBus.builder()
+                .busTypeEnum(BusTypeEnum.TIMETABLE_TYPE_BUS)
+                .routeNo(timetableTypeBusDto.getRouteNo())
+                .description(timetableTypeBusDto.getDescription())
+                .nodeNm(timetableTypeBusDto.getNodeNm())
+                .nextDepartureTime(timetableTypeBusDto.getNextDepartureTime())
+                        .prevDepartureTime(timetableTypeBusDto.getPrevDepartureTime())
+                        .timeBeforeNextDeparture(timetableTypeBusDto.getTimeBeforeNextDeparture())
+                        .timeSincePrevDeparture(timetableTypeBusDto.getTimeSincePrevDeparture())
+                        .build();
+        timetableTypeBusRepository.save(i);
     }
     public void createApiTypeBus(ApiTypeBus apiTypeBus) {
         apiTypeBusRepository.save(apiTypeBus);

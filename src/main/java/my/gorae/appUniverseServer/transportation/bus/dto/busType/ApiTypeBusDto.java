@@ -2,13 +2,12 @@ package my.gorae.appUniverseServer.transportation.bus.dto.busType;
 
 import lombok.Getter;
 import lombok.Setter;
-import my.gorae.appUniverseServer.common.IDto;
 import my.gorae.appUniverseServer.transportation.bus.dto.BusDto;
 import my.gorae.appUniverseServer.transportation.bus.entity.busType.ApiTypeBus;
 
 @Getter
 @Setter
-public class ApiTypeBusDto extends BusDto implements IDto {
+public class ApiTypeBusDto extends BusDto {
     private String nodeId; // 정류소 ID
     private String nodeNm; // 정류소명
     private String routeId; // 노선 ID

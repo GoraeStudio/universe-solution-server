@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import my.gorae.appUniverseServer.common.BaseEntity;
 import my.gorae.appUniverseServer.transportation.bus.entity.busType.ApiTypeBus;
+import my.gorae.appUniverseServer.transportation.bus.entity.busType.BusTypeEnum;
 import my.gorae.appUniverseServer.transportation.bus.entity.busType.TimetableTypeBus;
 import my.gorae.appUniverseServer.transportation.busStation.BusStationEntity;
 
@@ -36,4 +37,8 @@ public abstract class BusEntity extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "bus_station_id")
     )
     private List<BusStationEntity> busStationEntityList;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private BusTypeEnum busTypeEnum; // 버스 유형
 }
