@@ -27,6 +27,8 @@ public abstract class BusEntity extends BaseEntity {
 
     private String nodeNm; // 정류소명
 
+    private String description; // 설명
+
     @ManyToMany
     @JoinTable(
             name = "bus_bus_station",
