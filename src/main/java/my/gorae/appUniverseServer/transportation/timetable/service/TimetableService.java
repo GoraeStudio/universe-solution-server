@@ -53,6 +53,7 @@ public class TimetableService {
         if (t.isPresent()){
                 TimetableEntity timetableEntity = t.get();
                 return TimetableDto.builder()
+                        .id(timetableEntity.getId())
                         .dayCode(timetableEntity.getDayCode())
                         .applyStartAt(timetableEntity.getApplyStartAt())
                         .applyEndAt(timetableEntity.getApplyEndAt())
