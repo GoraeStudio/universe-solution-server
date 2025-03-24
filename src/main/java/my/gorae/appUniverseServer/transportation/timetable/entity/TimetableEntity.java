@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import my.gorae.appUniverseServer.common.BaseEntity;
 import my.gorae.appUniverseServer.transportation.bus.entity.busType.TimetableTypeBus;
@@ -29,7 +30,21 @@ public class TimetableEntity extends BaseEntity {
     @ManyToOne
     @JsonIgnore
     private TimetableTypeBus timetableTypeBus;
-
+//json Timetable 예시
+//[
+//    {
+//        "hour": 9,
+//            "minutes": [11, 24, 56, 78, 99]
+//    },
+//    {
+//        "hour": 10,
+//            "minutes": [22, 25]
+//    },
+//    {
+//        "hour": 15,
+//            "minutes": [12, 22]
+//    }
+//]
     @Lob
     @Column(columnDefinition = "TEXT")
     private String jsonTimetable;

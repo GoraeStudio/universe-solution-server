@@ -5,6 +5,7 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import my.gorae.appUniverseServer.transportation.bus.entity.BusEntity;
 import my.gorae.appUniverseServer.transportation.timetable.entity.TimetableEntity;
