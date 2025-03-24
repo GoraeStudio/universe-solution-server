@@ -25,6 +25,8 @@ public abstract class BusEntity extends BaseEntity {
 
     private String routeNo; // 노선번호 (노선 식별자 마을버스24번, 셔틀버스 등...)
 
+    private String nodeNm; // 정류소명
+
     @ManyToMany
     @JoinTable(
             name = "bus_bus_station",

@@ -17,7 +17,6 @@ import my.gorae.appUniverseServer.transportation.bus.entity.BusEntity;
 @NoArgsConstructor
 public class ApiTypeBus extends BusEntity {
     private String nodeId; // 정류소 ID
-    private String nodeNm; // 정류소명
     private String routeId; // 노선 ID
     private String routeTp; // 노선유형
     private String vehicleTp; // 도착예정버스 차량유형
