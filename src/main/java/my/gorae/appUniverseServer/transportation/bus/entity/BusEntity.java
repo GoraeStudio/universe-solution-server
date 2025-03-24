@@ -16,7 +16,7 @@ import java.util.List;
 
 @Entity
 @Getter
-@SuperBuilder
+@SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class BusEntity extends BaseEntity {

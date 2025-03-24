@@ -13,7 +13,7 @@ import my.gorae.appUniverseServer.transportation.bus.entity.BusEntity;
 @AllArgsConstructor
 @Getter
 @Entity
-@SuperBuilder
+@SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 public class ApiTypeBus extends BusEntity {
     private String nodeId; // 정류소 ID

@@ -7,9 +7,13 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface ApiTypeBusRepository extends JpaRepository<ApiTypeBus, Long> {
     @Modifying
     @Query("UPDATE ApiTypeBus a SET a.arrPrevStationCnt = null, a.arrTimeSec = null")
     void resetAllApiBusInfo();
+
+    Optional<ApiTypeBus> findApiTypeBusByRouteNoAndNodeNm(String routeNo, String nodeNm);
 }

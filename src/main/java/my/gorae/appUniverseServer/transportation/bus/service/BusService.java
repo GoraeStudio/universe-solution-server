@@ -14,6 +14,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class BusService {
@@ -46,13 +48,47 @@ public class BusService {
                         .build();
         timetableTypeBusRepository.save(i);
     }
-    public void createApiTypeBus(ApiTypeBus apiTypeBus) {
-        apiTypeBusRepository.save(apiTypeBus);
-    }
+
     @Transactional
     public void resetAllApiBusInfo(){
         apiTypeBusRepository.resetAllApiBusInfo();
     }
+    @Transactional
+    public void updateOrCreateApiBusInfo(String routeNo, String nodeNm, Integer arrPrevStationCnt, Integer arrTimeSec) {
+        Optional<ApiTypeBus> optionalApiTypeBus = findApiBusInfo(routeNo, nodeNm);
+
+        ApiTypeBus apiTypeBus = optionalApiTypeBus
+                .map(existedApiTypeBus -> updateApiBusInfo(existedApiTypeBus, arrPrevStationCnt, arrTimeSec))
+                .orElseGet(() -> createApiBusInfo(routeNo, nodeNm, arrPrevStationCnt, arrTimeSec));
+
+        apiTypeBusRepository.save(apiTypeBus);
+    }
+
+    private Optional<ApiTypeBus> findApiBusInfo(String routeNo, String nodeNm) {
+        return apiTypeBusRepository.findApiTypeBusByRouteNoAndNodeNm(routeNo, nodeNm);
+    }
+
+    private ApiTypeBus updateApiBusInfo(ApiTypeBus existedApiTypeBus, Integer arrPrevStationCnt, Integer arrTimeSec) {
+        return existedApiTypeBus.toBuilder()
+                .arrPrevStationCnt(arrPrevStationCnt)
+                .arrTimeSec(arrTimeSec)
+                .build();
+    }
+
+    private ApiTypeBus createApiBusInfo(String routeNo, String nodeNm, Integer arrPrevStationCnt, Integer arrTimeSec) {
+        return ApiTypeBus.builder()
+                .busTypeEnum(BusTypeEnum.API_TYPE_BUS)
+                .routeNo(routeNo)
+                .nodeNm(nodeNm)
+                .arrPrevStationCnt(arrPrevStationCnt)
+                .arrTimeSec(arrTimeSec)
+                .build();
+    }
+    @Transactional
+    public void deleteTimetableBus(Long id) {
+        timetableTypeBusRepository.deleteById(id);
+    }
+    @Transactional
     public void deleteBus(Long id) {
         busRepository.deleteById(id);
     }
