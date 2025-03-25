@@ -26,8 +26,8 @@ public class TimetableChecker {
     }
     /**
      * 요일 코드가 0부터 7까지의 숫자로 이루어져 있는지 확인한다.
-     *
-     * @param dayCode 검증할 요일 코드 문자열
+     * 0- 일요일, 1- 월요일, 2- 화요일, 3- 수요일, 4- 목요일, 5- 금요일, 6- 토요일, 7- 공휴일
+     * @param dayCode 검증할 요일 코드 문자열 (쉼표로 구분된 값)
      * @return 입력된 요일 코드가 유효하면 true, 그렇지 않으면 false 반환
      */
     public static boolean isDayCodeValid(String dayCode) {

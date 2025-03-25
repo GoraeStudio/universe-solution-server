@@ -2,9 +2,6 @@ package my.gorae.appUniverseServer.transportation.bus.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import my.gorae.appUniverseServer.transportation.busStation.BusStationEntity;
-
-import java.util.List;
 
 @Getter
 @Setter

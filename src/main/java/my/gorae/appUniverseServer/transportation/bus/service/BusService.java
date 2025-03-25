@@ -10,6 +10,8 @@ import my.gorae.appUniverseServer.transportation.bus.entity.busType.TimetableTyp
 import my.gorae.appUniverseServer.transportation.bus.repository.ApiTypeBusRepository;
 import my.gorae.appUniverseServer.transportation.bus.repository.BusRepository;
 import my.gorae.appUniverseServer.transportation.bus.repository.TimetableTypeBusRepository;
+import my.gorae.appUniverseServer.transportation.busStation.dto.BusStationDto;
+import my.gorae.appUniverseServer.transportation.busStation.entity.BusStationEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -93,5 +95,4 @@ public class BusService {
     public void deleteBus(Long id) {
         busRepository.deleteById(id);
     }
-
 }

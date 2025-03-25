@@ -1,15 +1,12 @@
 package my.gorae.appUniverseServer.transportation.bus.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import my.gorae.appUniverseServer.common.BaseEntity;
-import my.gorae.appUniverseServer.transportation.bus.entity.busType.ApiTypeBus;
 import my.gorae.appUniverseServer.transportation.bus.entity.busType.BusTypeEnum;
-import my.gorae.appUniverseServer.transportation.bus.entity.busType.TimetableTypeBus;
-import my.gorae.appUniverseServer.transportation.busStation.BusStationEntity;
+import my.gorae.appUniverseServer.transportation.busStation.entity.BusStationEntity;
 
 
 import java.util.List;
@@ -34,7 +31,8 @@ public abstract class BusEntity extends BaseEntity {
     @JoinTable(
             name = "bus_bus_station",
             joinColumns = @JoinColumn(name = "bus_id"),
-            inverseJoinColumns = @JoinColumn(name = "bus_station_id")
+            inverseJoinColumns = @JoinColumn(name = "bus_station_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"bus_id", "bus_station_id"})
     )
     private List<BusStationEntity> busStationEntityList;
 
